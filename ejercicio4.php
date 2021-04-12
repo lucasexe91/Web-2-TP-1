@@ -18,39 +18,41 @@
             <a href="ejercicio4.php?cant=100">Mostrar primeros 100</a>
         </li>
         <li>
-            <a href="ejercicio4.php?cant=todo">Mostrar todo</a>
+            <a href="ejercicio4.php?cant=120">Mostrar todo</a>
         </li>
     </ul>
 <?php
-    $cant = isset($_GET['cant']);
-    $array = array [];
-    for ($i = 0; $i >= 120; $i++){
-        $array[$i];
-    }
-
-
-    switch ($cant){
-        case 5: muestra ($array, 5);
-        case 20: muestra ($array, 20);
-        case 100: muestra ($array, 100);
-        case 'todo': muestratodo($array);
-    }
-
-    function muestra($arr,$cant){
-        echo'<ul>'.
-        for($i=0;$i <= $cant;$i++){
-            echo '<li>'. $arr[$i] . '</li>';
+    function muestra($array, $cant){
+        echo'<ul>';
+        for ($j = 0; $j <= ($cant - 1); $j++){
+            echo '<li>';
+            echo $array[$j];
+            echo'</li>';
         }
-        .'</ul>';
-    }
-    function muestratodo($arr){
-        echo'<ul>'.
-        foreach($arr as $j){
-            echo '<li>'. $arr[$j] . '</li>';
-        }
-        .'</ul>';
+        echo '</ul>';
     }
 
+    if (isset($_GET['cant'])){
+        $cant = $_GET['cant'];
+        $arr=array();
+
+        for ($i = 0; $i <= 120; $i++){
+            $arr[$i] = mt_rand(0,1000);
+        }
+
+        var_dump($arr);
+
+        switch ($cant){
+            case 5: muestra($arr,5);
+                break;
+            case 20: muestra($arr,20);
+                break;
+            case 100: muestra($arr,100);
+                break;
+            case 120: muestra($arr,120);
+                break;
+        }
+    }
 ?>
 </body>
 </html>
